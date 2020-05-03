@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const preventCopy = styled.div`
+export const PreventCopy = styled.div`
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -11,11 +11,10 @@ export const preventCopy = styled.div`
 
 export const Flexbox = styled.div`
   margin: 0 auto;
-  padding: 1rem;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 `;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Flexbox } from "../style/app/_app";
+import { Flexbox, PreventCopy } from "../style/app/_app";
 import { Navbar } from "./common/Navbar";
 import { LandingPage } from "./LandingPage";
 import ActiveUsers from "./ActiveUsers";
@@ -10,13 +10,15 @@ import { PageNotFound } from "./PageNotFound";
 
 function App() {
   return (
-    <Flexbox>
-      <Switch>
-        <Route exact path="/" component={LandingPageContainer} />
-        <Route component={AppContainer} />
-        <Route component={PageNotFound} />
-      </Switch>
-    </Flexbox>
+    <PreventCopy>
+      <Flexbox>
+        <Switch>
+          <Route exact path="/" component={LandingPageContainer} />
+          <Route component={AppContainer} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </Flexbox>
+    </PreventCopy>
   );
 }
 

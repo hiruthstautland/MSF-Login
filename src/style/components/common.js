@@ -3,17 +3,20 @@ import styled from "styled-components";
 import msfColors from "../_msf-colors";
 
 export const Heading = styled.h1`
+  margin: 0.5rem 0.5rem 0.5rem 1rem;
+  text-align: center;
   font-size: 2rem;
 `;
 
-export const Container = styled.div`
-  font-size: 1 rem;
+export const ButtonContainer = styled.div`
+  margin: 1rem;
+  display: flex;
+  justify-content: space-around;
 `;
 
 export const Button = styled.button`
   display: inline-block;
-  margin: 1em;
-  padding: 0.25em 1em;
+  padding: 0.25em 0.5em;
   border: 1px solid ${(props) => props.theme.button.color};
   border-radius: 2px;
   background: ${(props) => props.theme.button.background};
@@ -35,3 +38,7 @@ Button.defaultProps = {
     },
   },
 };
+
+// export const Link = styled.a`
+//   textdecoration: "none";
+// `;
