@@ -1,23 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { Heading, Container, Button } from "../../style/components/common";
 export const LandingPage = () => (
-  <div className="main">
+  <Container>
     <fieldset>
       <legend>
-        <h2>MSF</h2>
+        <Heading>MSF</Heading>
       </legend>
       <p>Hello from Landing Page. Velkommen til MSF!</p>
       <Link to="signup">
-        <button className="btn-newUser" type="button">
-          Registrer ny bruker!
-        </button>
+        <Button type="button">Registrer ny bruker!</Button>
       </Link>
       <Link to="login">
-        <button className="btn-oldUser" type="button">
-          Fortsett til Login!
-        </button>
+        <Button type="button">Fortsett til Login!</Button>
       </Link>
     </fieldset>
-  </div>
+  </Container>
 );

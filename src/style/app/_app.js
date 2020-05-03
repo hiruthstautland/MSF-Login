@@ -11,6 +11,7 @@ export const preventCopy = styled.div`
 
 export const Flexbox = styled.div`
   margin: 0 auto;
+  padding: 1rem;
   width: 100vw;
   height: 100vh;
   display: flex;

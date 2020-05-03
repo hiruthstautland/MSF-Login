@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Nav, NavLinks, activeStyle } from "../../../style/navbar/_navbar";
+import { Nav, NavLinks, activeStyle } from "../../../style/components/_navbar";
 
 export const Navbar = () => {
   return (

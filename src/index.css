@@ -1,3 +1,11 @@
-nav {
-  padding: 2rem 0 2rem 0;
+* {
+  font-size: 1rem;
+}
+
+::root {
+  --primary: "#EE00000";
+  --white: "#FFFFFF";
+  --text: "#4B4B4B";
+  --dark: "#202020";
+  --darkest: "#050505";
 }
