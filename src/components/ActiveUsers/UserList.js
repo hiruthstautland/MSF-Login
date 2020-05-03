@@ -11,19 +11,20 @@ export const UserList = ({ users }) => {
           <th>Name</th>
           <th>Email</th>
           <th>Role</th>
+          <th>Campaigns</th>
         </tr>
       </thead>
       <tbody>
         {users.map((user) => {
           return (
             <tr key={user.id}>
-              <td>Innlogget?</td>
+              <td>Aktiv?</td>
               <td className="user-table__user">
                 <Link to={`/user/${user.slug}`}>{user.name}</Link>
               </td>
               <td>{user.email}</td>
               <td>{user.userRole}</td>
-              <td>{user.userRole}</td>
+              <td>{user.campaign}</td>
             </tr>
           );
         })}

@@ -1,10 +1,8 @@
 /*
 Validation/Customization: https://github.com/typicode/json-server/issues/266
-Delay: https://github.com/typicode/json-server/issues/534
 ID: https://github.com/typicode/json-server/issues/613#issuecomment-325393041
 Relevant source code: https://github.com/typicode/json-server/blob/master/src/cli/run.js
 */
-
 const jsonServer = require("json-server");
 const server = jsonServer.create();
 const path = require("path");
@@ -20,7 +18,7 @@ server.use(middlewares);
 
 server.use(jsonServer.bodyParser);
 
-// add error handler on -> req, res, next, err
+// TODO:add error handler -> req, res, next, err
 
 // custom delay on all request
 server.use((req, res, next) => {
@@ -35,12 +33,14 @@ server.use((req, res, next) => {
 });
 
 // post
-server.post("/users", (req, res, next) => {
+server.post("/users", async (req, res, next) => {
   const error = validateUser(req.body);
   if (error) {
     res.status(400).send(error);
   } else {
-    req.body.slug = createSlug(req.body.name);
+    console.log("Post ", req.body);
+    req.body.slug = await createSlug(req.body.name);
+    req.body.email = createEmail(req.body.slug);
     next();
   }
 });
@@ -59,11 +59,13 @@ function createSlug(name) {
     .replace(/^-|-$/g, "")
     .toLowerCase();
 }
+function createEmail(slug) {
+  return `${slug}@MSFNORWAY.com`;
+}
 
 function validateUser(user) {
   if (!user.name) return `Name is required!`;
   if (!user.email) return `Email is required!`;
   if (!user.userRole) return `Role is required!`;
-  //   return ``;
-  return null;
+  return ``;
 }

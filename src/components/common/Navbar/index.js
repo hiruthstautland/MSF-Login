@@ -1,20 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Nav, NavLinks, activeStyle } from "../../../style/navbar/_navbar";
 
 export const Navbar = () => {
-  const activeStyle = {
-    color: "var(--msf-green)",
-    textDecoration: "underline",
-  };
-
-  const NavLinks = {
-    margin: "0 1rem",
-    textDecoration: "none",
-    letterSpacing: ".1rem",
-  };
-
   return (
-    <nav>
+    <Nav>
       {" | "}
       <NavLink to="/" style={NavLinks} activeStyle={activeStyle} exact>
         Home
@@ -32,6 +22,6 @@ export const Navbar = () => {
         Aktive brukere
       </NavLink>
       {" | "}
-    </nav>
+    </Nav>
   );
 };
