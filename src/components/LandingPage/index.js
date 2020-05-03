@@ -1,25 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./style.css";
 
 export const LandingPage = () => (
-  <div className='main'>
+  <div className="main">
     <fieldset>
       <legend>
         <h2>MSF</h2>
       </legend>
       <p>Hello from Landing Page. Velkommen til MSF!</p>
-      <Link to='signup'>
-        <button className='btn-newUser' type='button'>
+      <Link to="signup">
+        <button className="btn-newUser" type="button">
           Registrer ny bruker!
         </button>
       </Link>
-      <Link to='login'>
-        <button className='btn-oldUser' type='button'>
+      <Link to="login">
+        <button className="btn-oldUser" type="button">
           Fortsett til Login!
         </button>
       </Link>
     </fieldset>
   </div>
 );
- 
