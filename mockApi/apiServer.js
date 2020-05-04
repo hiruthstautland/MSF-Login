@@ -22,7 +22,7 @@ server.use(jsonServer.bodyParser);
 
 // custom delay on all request
 server.use((req, res, next) => {
-  setTimeout(next, 200);
+  setTimeout(next, 2000);
 });
 
 server.use((req, res, next) => {
