@@ -17,7 +17,7 @@ export function loadCampaigns() {
   return async function (dispatch) {
     try {
       const campaigns = await campaignApi.getCampaigns();
-      dispatch(loadCampaignsSuccess(campaigns));
+      return dispatch(loadCampaignsSuccess(campaigns));
     } catch (error) {
       // TODO: handle error later, by dispatching an error that know that it has failed
       throw error;

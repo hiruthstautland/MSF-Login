@@ -6,14 +6,15 @@ export const LoginContainer = styled.div`
 `;
 
 export const LoginFormContainer = styled.div`
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50%;
   height: 100vh;
   background: #d3d3d3;
 `;
 
 export const LoginImgContainer = styled.div`
-  display: inline-block;
   width: 50%;
   height: 100vh;
   background: #eee;
@@ -22,6 +23,7 @@ export const LoginImg = styled.div`
   background: center no-repeat url(${(props) => props.imgUrl});
   background-size: cover;
   height: 100vh;
-  text-align: center;
-  padding: 1rem;
+`;
+export const LoginLogo = styled.span`
+  margin: 1rem;
 `;

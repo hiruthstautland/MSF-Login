@@ -9,17 +9,17 @@ import { UserList } from "./UserList";
 class ActiveUsers extends React.Component {
   componentDidMount() {
     const { users, campaigns, actions } = this.props;
-    if (users.length === 0) {
-      actions.loadUsers().catch((error) => {
-        // TODO: make a customer Friendly UI -> display error message "sorry, unable to find/get user for you! Try again!"
-        alert(`LOADING USERS FAILED: ${error}`);
-      });
-    }
-    if (campaigns.length === 0) {
-      actions.loadCampaigns().catch((error) => {
-        alert(`Not ablet to load campaigns: ${error}`);
-      });
-    }
+    // if (users.length === 0) {
+    actions.loadUsers().catch((error) => {
+      // TODO: make a customer Friendly UI -> display error message "sorry, unable to find/get user for you! Try again!"
+      alert(`LOADING USERS FAILED: ${error}`);
+    });
+    // }
+    // if (campaigns.length === 0) {
+    actions.loadCampaigns().catch((error) => {
+      alert(`Not ablet to load campaigns: ${error}`);
+    });
+    // }
   }
 
   render() {

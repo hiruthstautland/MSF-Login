@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 // import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
+import {
+  Button,
+  Heading,
+  ButtonContainer,
+} from "../../../style/components/common";
+import { AutocompleteFormWr } from "./_style";
 import { AutocompleteList } from "./autocompletelist";
 
 export const AutoCompleteForm = () => {
@@ -19,22 +24,20 @@ export const AutoCompleteForm = () => {
   // logout active names
 
   return (
-    <div>
+    <AutocompleteFormWr>
       <form autoComplete="on">
         <fieldset>
           <legend>
-            <h2>Login</h2>
+            <Heading>Login</Heading>
           </legend>
           <label htmlFor="name">
-            Navn
             <input id="username" type="text" />
           </label>
-          <Link to="landingpage">
-            <button type="button">Logg inn</button>
-          </Link>
-          <Link to="/">
-            <button type="button">Tilbake</button>
-          </Link>
+          <ButtonContainer>
+            <Link to="landingpage">
+              <Button type="button">Logg inn</Button>
+            </Link>
+          </ButtonContainer>
         </fieldset>
       </form>
       {showForm && (
@@ -45,6 +48,6 @@ export const AutoCompleteForm = () => {
           onSelectSuggestion={onSelectSuggestion}
         />
       )}
-    </div>
+    </AutocompleteFormWr>
   );
 };

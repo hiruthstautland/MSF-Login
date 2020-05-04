@@ -6,6 +6,7 @@ import {
   LoginFormContainer,
   LoginImgContainer,
   LoginImg,
+  LoginLogo,
 } from "./_style";
 
 export const Login = () => {
@@ -15,7 +16,9 @@ export const Login = () => {
         <AutoCompleteForm />
       </LoginFormContainer>
       <LoginImgContainer>
-        <LoginImg imgUrl={msfEmpImg}>MSF - LOGO</LoginImg>
+        <LoginImg imgUrl={msfEmpImg}>
+          <LoginLogo>MSF - LOGO</LoginLogo>
+        </LoginImg>
       </LoginImgContainer>
     </LoginContainer>
   );
