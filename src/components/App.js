@@ -6,6 +6,7 @@ import { LandingPage } from "./LandingPage";
 import ActiveUsers from "./ActiveUsers";
 import { Login } from "./Login";
 import SignUp from "./SignUp";
+import ManageUsers from "./ManageUsers/ManageUsersForm";
 import { PageNotFound } from "./PageNotFound";
 
 function App() {
@@ -32,6 +33,8 @@ const AppContainer = () => (
     <Route path="/login" component={Login} />
     <Route path="/signup" component={SignUp} />
     <Route path="/users" component={ActiveUsers} />
+    <Route path="/admin/:slug" component={ManageUsers} />
+    <Route path="/admin" component={ManageUsers} />
   </>
 );
 export default App;

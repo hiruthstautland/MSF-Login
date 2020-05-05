@@ -8,6 +8,7 @@ import {
 } from "../../../style/components/common";
 import { AutocompleteFormWr } from "./_style";
 import { AutocompleteList } from "./autocompletelist";
+import { TextInput } from "../TextInput";
 
 export const AutoCompleteForm = () => {
   const [showForm, setShowForm] = useState(false);
@@ -30,9 +31,7 @@ export const AutoCompleteForm = () => {
           <legend>
             <Heading>Login</Heading>
           </legend>
-          <label htmlFor="name">
-            <input id="username" type="text" />
-          </label>
+          <TextInput />
           <ButtonContainer>
             <Link to="landingpage">
               <Button type="button">Logg inn</Button>

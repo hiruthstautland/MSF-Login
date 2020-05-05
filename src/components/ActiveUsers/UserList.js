@@ -1,35 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { UserTable, UserTableHeading, UserTableTd } from "./_style";
 
 export const UserList = ({ users }) => {
   return (
-    <table className="user-table">
-      <thead className="user-table__categories">
+    <UserTable>
+      <UserTableHeading>
         <tr>
-          <th />
+          <th>Online</th>
           <th>Name</th>
-          <th>Email</th>
+          <th>Gruppe</th>
           <th>Role</th>
           <th>Campaigns</th>
         </tr>
-      </thead>
+      </UserTableHeading>
       <tbody>
         {users.map((user) => {
           return (
             <tr key={user.id}>
-              <td>Aktiv?</td>
-              <td className="user-table__user">
+              <UserTableTd> -/+ </UserTableTd>
+              <UserTableTd>
                 <Link to={`/user/${user.slug}`}>{user.name}</Link>
-              </td>
-              <td>{user.email}</td>
-              <td>{user.userRole}</td>
-              <td>{user.campaign}</td>
+              </UserTableTd>
+              <UserTableTd>{user.team}</UserTableTd>
+              <UserTableTd>{user.userRole}</UserTableTd>
+              <UserTableTd>{user.campaigns}</UserTableTd>
             </tr>
           );
         })}
       </tbody>
-    </table>
+    </UserTable>
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import msfEmpImg from "../../content/img/msf_emp.gif";
 import { AutoCompleteForm } from "../common/AutocompleteForm";
 import {
-  LoginContainer,
+  LoginWr,
   LoginFormContainer,
   LoginImgContainer,
   LoginImg,
@@ -11,7 +11,7 @@ import {
 
 export const Login = () => {
   return (
-    <LoginContainer>
+    <LoginWr>
       <LoginFormContainer>
         <AutoCompleteForm />
       </LoginFormContainer>
@@ -20,6 +20,6 @@ export const Login = () => {
           <LoginLogo>MSF - LOGO</LoginLogo>
         </LoginImg>
       </LoginImgContainer>
-    </LoginContainer>
+    </LoginWr>
   );
 };
