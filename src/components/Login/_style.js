@@ -13,17 +13,24 @@ export const LoginFormContainer = styled.div`
   height: 100vh;
   background: #d3d3d3;
 `;
+export const LoginFormWr = styled.div`
+  margin: 2rem;
+  text-align: left;
+`;
 
 export const LoginImgContainer = styled.div`
   width: 50%;
   height: 100vh;
-  background: #eee;
 `;
 export const LoginImg = styled.div`
   background: center no-repeat url(${(props) => props.imgUrl});
   background-size: cover;
-  height: 100vh;
+  height: 100%;
 `;
 export const LoginLogo = styled.span`
-  margin: 1rem;
+  position: relative;
+  top: 2rem;
+  left: 2rem;
+  color: darkred;
+  font-size: 22px;
 `;

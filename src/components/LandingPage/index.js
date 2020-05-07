@@ -1,10 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Heading,
-  Button,
-  ButtonContainer,
-} from "../../style/components/common";
+import { Heading, Button, ButtonContainer } from "../../style/_common";
 export const LandingPage = () => (
   <fieldset>
     <Heading> Velkommen til MSF Norge!</Heading>

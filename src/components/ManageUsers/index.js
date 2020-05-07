@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import * as userActions from "../../redux/actions/userActions";
 import * as campaignActions from "../../redux/actions/campaignActions";
-import { Heading } from "../../style/components/common";
 import { ManageUsersForm } from "./ManageUsersForm";
 import { newUser } from "../../../mockApi/mockData";
 
 const ManageUsers = ({
   users,
   campaigns,
+  saveUser,
   loadUsers,
   loadCampaigns,
   ...props
@@ -34,11 +34,27 @@ const ManageUsers = ({
     }
   }, []);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: name === "campaigns" ? parseInt(value, 10) : value,
+    }));
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    saveUser(user);
+    console.log(users);
+  };
   return (
-    <>
-      <Heading>Administrer Brukere</Heading>
-      <ManageUsersForm user={user} errors={errors} campaigns={campaigns} />
-    </>
+    <ManageUsersForm
+      user={user}
+      errors={errors}
+      campaigns={campaigns}
+      onSave={handleSave}
+      onChange={handleChange}
+    />
   );
 };
 
@@ -47,6 +63,7 @@ ManageUsers.propTypes = {
   users: PropTypes.array.isRequired,
   campaigns: PropTypes.array.isRequired,
   loadUsers: PropTypes.func.isRequired,
+  saveUser: PropTypes.func.isRequired,
   loadCampaigns: PropTypes.func.isRequired,
 };
 
@@ -60,6 +77,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   loadUsers: userActions.loadUsers,
+  saveUser: userActions.saveUser,
   loadCampaigns: campaignActions.loadCampaigns,
 };
 

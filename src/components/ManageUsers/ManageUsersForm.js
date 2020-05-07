@@ -2,63 +2,78 @@ import React from "react";
 import PropTypes from "prop-types";
 import { TextInput } from "../common/TextInput";
 import { SelectInput } from "../common/SelectInput";
-import { Heading } from "../../style/components/common";
-
+import { Heading, Button, ButtonContainer } from "../../style/_common";
+import { FormContainer, FlexContainer } from "./_style";
 export const ManageUsersForm = ({
   user,
   campaigns,
   onSave,
-
   onChange,
   saving,
   errors = {},
 }) => {
+  console.log(campaigns);
   return (
-    <form onSubmit={onSave}>
+    <FlexContainer>
       <Heading> {user.id ? `Rediger` : `Legg til`} Bruker </Heading>
-      {errors.onSave && <div role="alert">{errors.onSave}</div>}
-      <TextInput
-        name="userName"
-        label="userName"
-        value={user.name}
-        onChange={onChange}
-        error={errors.title}
-      />
-      <TextInput
-        name="userRole"
-        label="userRole"
-        value={user.userRole}
-        onChange={oncCange}
-        error={errors.title}
-      />
-      <SelectInput
-        name="campaign"
-        label="campaign"
-        value={user.id || ""}
-        defaultOption="Select Campaign"
-        options={campaigns.map((c) => ({
-          value: c.id,
-          text: c.name,
-        }))}
-        onChange={onChange}
-        error={errors.campaigns}
-      />
-      <TextInput
-        name="team"
-        label="team"
-        value={user.team}
-        onChange={onChange}
-        error={errors.title}
-      />
-      <Button type="submit" disabled={saving}>
-        {saving ? "Lagrer" : "Lagre"}
-      </Button>
-    </form>
+      <FormContainer onSubmit={onSave}>
+        {errors.onSave && <div role="alert">{errors.onSave}</div>}
+        <TextInput
+          name="name"
+          label="Navn"
+          placeholder={user.name || "Brukernavn"}
+          value={user.name}
+          onChange={onChange}
+          error={errors.title}
+        />
+        <TextInput
+          name="userRole"
+          label="Rolle"
+          placeholder={user.userRole || "Rolle"}
+          value={user.userRole}
+          onChange={onChange}
+          error={errors.title}
+        />
+        <TextInput
+          name="campaigns"
+          label="Kampanjer"
+          placeholder={"Kampanjer"}
+          value={user.userRole}
+          onChange={onChange}
+          error={errors.title}
+        />
+        <SelectInput
+          name="campaign"
+          label="campaign"
+          value={user.campaigns || ""}
+          defaultOption="Velg Kampanje"
+          options={campaigns.map((c) => ({
+            value: c.id,
+            text: c.name,
+          }))}
+          onChange={onChange}
+          error={errors.campaigns}
+        />
+        <TextInput
+          name="team"
+          label="Team"
+          placeholder={user.team || "Team"}
+          value={user.team}
+          onChange={onChange}
+          error={errors.title}
+        />
+        <ButtonContainer>
+          <Button type="submit" disabled={saving}>
+            {saving ? "Lagrer" : "Lagre"}
+          </Button>
+        </ButtonContainer>
+      </FormContainer>
+    </FlexContainer>
   );
 };
 
 ManageUsersForm.propTypes = {
-  users: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired,
   campaigns: PropTypes.array.isRequired,
   errors: PropTypes.object,
   onSave: PropTypes.func.isRequired,

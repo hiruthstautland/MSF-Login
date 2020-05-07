@@ -1,6 +1,6 @@
 import React from "react";
 import msfEmpImg from "../../content/img/msf_emp.gif";
-import { AutoCompleteForm } from "../common/AutocompleteForm";
+import LoginForm from "./LoginForm";
 import {
   LoginWr,
   LoginFormContainer,
@@ -13,7 +13,7 @@ export const Login = () => {
   return (
     <LoginWr>
       <LoginFormContainer>
-        <AutoCompleteForm />
+        <LoginForm />
       </LoginFormContainer>
       <LoginImgContainer>
         <LoginImg imgUrl={msfEmpImg}>

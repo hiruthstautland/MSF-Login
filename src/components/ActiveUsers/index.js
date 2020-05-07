@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as userActions from "../../redux/actions/userActions";
 import * as campaignActions from "../../redux/actions/campaignActions";
-import PropTypes, { func } from "prop-types";
+import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { UserList } from "./UserList";
-import { Heading } from "../../style/components/common";
+import { Heading, ButtonContainer, Button } from "../../style/_common";
 import { ActiveUsersWr } from "./_style";
 
 const ActiveUsers = ({ users, actions, campaigns }) => {
@@ -25,11 +25,12 @@ const ActiveUsers = ({ users, actions, campaigns }) => {
     }
   }, []);
 
-  console.log(campaigns);
-  console.log(users);
   return (
     <ActiveUsersWr>
       <Heading>Aktive Brukere</Heading>
+      <ButtonContainer>
+        <Button>Legg til ny bruker</Button>
+      </ButtonContainer>
       {campaigns.length && users.length && <UserList users={users} />}
     </ActiveUsersWr>
   );

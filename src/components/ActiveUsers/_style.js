@@ -11,9 +11,10 @@ export const UserTable = styled.table`
 export const UserTableHeading = styled.thead`
   text-transform: uppercase;
   font-weight: bolder;
+  border-bottom: 2px solid gray;
 `;
 
 export const UserTableTd = styled.td`
   padding: 1.2rem;
-  border: 1px solid gray;
+  border-bottom: 1px solid gray;
 `;

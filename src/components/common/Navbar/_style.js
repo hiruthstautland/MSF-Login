@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Nav = styled.div`
   margin-bottom: 1px;
-  width: 100vw;
+  width: 100%;
   height: 2rem;
   background: #eee;
   -webkit-box-shadow: 0px 0px 1px 1px gray;
@@ -10,12 +10,13 @@ export const Nav = styled.div`
   box-shadow: 0px 0px 1px 1px gray;
 `;
 
-export const NavbarWideWr = styled.div`
+export const NavbarWideList = styled.div`
   height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 `;
+
 //make a drop down menu
 export const NavbarNarrowWr = styled.div`
   width: 40vw;
@@ -39,6 +40,3 @@ export const NavLinks = {
     color: "black",
   },
 };
-//  export const NavLinks::hover {
-// opacity: 0.5;
-//   }

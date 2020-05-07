@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
-import msfColors from "../_msf-colors";
+import msfColors from "./_msf-colors";
 
 export const Heading = styled.h1`
-  margin: 0.5rem 0.5rem 0.5rem 1rem;
-  text-align: center;
-  font-size: 2rem;
+  margin: 1rem 0.5rem 2rem 0;
+  font-size: 22px;
+  text-transform: uppercase;
+`;
+
+export const TextLabel = styled.div`
+  display: block;
+  text-align: left;
+  opacity: 0.8;
 `;
 
 export const ButtonContainer = styled.div`

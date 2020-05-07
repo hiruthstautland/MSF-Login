@@ -1,26 +1,37 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { TextLabel } from "../../../style/_common";
 
 export const TextInput = ({
   name,
   label,
+  type,
   placeholder,
   error,
   value,
   onChange,
 }) => {
+  const TextInputStyle = {
+    margin: "1rem 0",
+    width: "100%",
+    background: "none",
+    border: "none",
+    borderBottom: "1px solid white",
+  };
   return (
     <>
       {!error && (
-        <label htmlFor={label}>
+        <>
+          <TextLabel htmlFor={label}>{label}</TextLabel>
           <input
-            name={name}
-            type="text"
-            value={value}
+            style={TextInputStyle}
+            name={name ? name : ""}
+            type={type ? type : "text"}
+            value={value ? value : ""}
             onChange={onChange}
-            placeholder={name || "Brukernavn"}
+            placeholder={placeholder}
           />
-        </label>
+        </>
       )}
     </>
   );
