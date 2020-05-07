@@ -21,7 +21,7 @@ export const UserList = ({ users }) => {
             <tr key={user.id}>
               <UserTableTd> -/+ </UserTableTd>
               <UserTableTd>
-                <Link to={`/user/${user.slug}`}>{user.name}</Link>
+                <Link to={`/admin/users/${user.slug}`}>{user.name}</Link>
               </UserTableTd>
               <UserTableTd>{user.team}</UserTableTd>
               <UserTableTd>{user.userRole}</UserTableTd>

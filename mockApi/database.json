@@ -1,99 +1,34 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Mina",
-      "userRole": "Medarbeider-int",
-      "team": "LSP",
-      "campaigns": 1
-    },
-    {
-      "id": 2,
-      "name": "Mina D",
-      "userRole": "Medarbeider-eks",
-      "team": "LSP",
-      "campaigns": 4
-    },
-    {
-      "id": 3,
-      "name": "Mina D L",
-      "userRole": "Medarbeider-int",
-      "team": "LSP",
-      "campaigns": 4
-    },
-    {
-      "id": 4,
-      "name": "Mina D Lundevåg",
-      "userRole": "Admin",
-      "team": "LSP",
-      "campaigns": 3
-    },
-    {
-      "id": 5,
-      "name": "Mina D Lundevåg",
-      "userRole": "Admin",
-      "team": "LSP",
-      "campaigns": 3
-    },
-    {
-      "id": 6,
-      "name": "Mina D Lundevåg",
-      "userRole": "Admin",
-      "team": "LSP",
-      "campaigns": 3
-    },
-    {
-      "id": 7,
-      "name": "Mina D Lundevåg",
-      "userRole": "Admin",
-      "team": "LSP",
-      "campaigns": 3
-    },
-    {
       "id": 8,
-      "name": "Mina D Lundevåg",
-      "userRole": "Admin",
-      "team": "LSP",
-      "campaigns": 3
+      "name": "mina",
+      "userRole": "admin",
+      "team": "LSD",
+      "campaigns": 2,
+      "createdAt": 1588887239960,
+      "slug": "mina",
+      "email": "mina@MSFNORWAY.com"
     },
     {
       "id": 9,
-      "name": "Gunnar",
-      "userRole": "Gledesspredar",
-      "team": "Woff Woff",
-      "campaigns": null,
-      "campaign": "4",
-      "createdAt": 1588872294286,
-      "slug": "gunnar",
-      "email": "gunnar@MSFNORWAY.com"
-    },
-    {
-      "id": 10,
-      "name": "Gunnar",
-      "userRole": "Gledesspredar",
-      "team": "Woff Woff",
-      "campaigns": null,
-      "campaign": "4",
-      "createdAt": 1588872299734,
-      "slug": "gunnar",
-      "email": "gunnar@MSFNORWAY.com"
-    },
-    {
-      "id": 11,
-      "name": "Hiruth",
-      "userRole": "test",
-      "team": "test",
-      "campaigns": null,
-      "campaign": "4",
-      "createdAt": 1588872433399,
-      "slug": "hiruth",
-      "email": "hiruth@MSFNORWAY.com"
+      "name": "Mina D",
+      "userRole": "Doktor ",
+      "team": "LLD",
+      "campaigns": 2,
+      "createdAt": 1588887392544,
+      "slug": "mina-d",
+      "email": "mina-d@MSFNORWAY.com"
     }
   ],
   "campaigns": [
     {
       "id": 1,
       "name": "Moria"
+    },
+    {
+      "id": 2,
+      "name": "Annet"
     },
     {
       "id": 3,

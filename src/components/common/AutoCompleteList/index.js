@@ -7,9 +7,9 @@ export const AutocompleteList = ({
   onSelectSuggestion,
 }) => {
   return (
-    <div className="autocomplete__suggestion" tabIndex="0">
+    <div tabIndex="0">
       {suggestions.length > 0 && (
-        <ul className="autocomplete__list">
+        <ul>
           {suggestions.map((suggestion, index) => {
             const suggestionArray = suggestion.id.split(
               new RegExp(`(${userInput})`, "gi")

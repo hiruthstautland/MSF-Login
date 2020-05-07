@@ -3,26 +3,29 @@ import { connect } from "react-redux";
 import * as userActions from "../../redux/actions/userActions";
 import * as campaignActions from "../../redux/actions/campaignActions";
 import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
 import { UserList } from "./UserList";
 import { Heading, ButtonContainer, Button } from "../../style/_common";
 import { ActiveUsersWr } from "./_style";
 
-const ActiveUsers = ({ users, actions, campaigns }) => {
+const ActiveUsers = ({ users, campaigns, loadUsers, loadCampaigns }) => {
+  //: TODO, use props.history for routing
   useEffect(() => {
     // TODO: set up a better if statement, what if new users are added they need to be loaded
-
     if (users.length === 0) {
-      actions.loadUsers().catch((error) => {
+      loadUsers().catch((error) => {
         // TODO: make a customer Friendly UI -> display error message "sorry, unable to find/get user for you! Try again!"
         Console.log(`LOADING USERS FAILED: ${error}`);
       });
     }
     if (campaigns.length === 0) {
-      actions.loadCampaigns().catch((error) => {
+      loadCampaigns().catch((error) => {
         console.log(`Not ablet to load campaigns: ${error}`);
       });
     }
+
+    return () => {
+      console.log("ActiveUsers unmounted");
+    };
   }, []);
 
   return (
@@ -37,7 +40,6 @@ const ActiveUsers = ({ users, actions, campaigns }) => {
 };
 
 ActiveUsers.propTypes = {
-  actions: PropTypes.object.isRequired,
   users: PropTypes.array.isRequired,
   campaigns: PropTypes.array.isRequired,
 };
@@ -58,16 +60,9 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: {
-      loadUsers: bindActionCreators(userActions.loadUsers, dispatch),
-      loadCampaigns: bindActionCreators(
-        campaignActions.loadCampaigns,
-        dispatch
-      ),
-    },
-  };
-}
+const mapDispatchToProps = {
+  loadUsers: userActions.loadUsers,
+  loadCampaigns: campaignActions.loadCampaigns,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ActiveUsers);

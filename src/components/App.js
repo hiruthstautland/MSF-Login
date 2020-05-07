@@ -31,7 +31,7 @@ const AppUserContainer = () => (
     <Navbar />
     <Route path="/signup" component={SignUp} />
     <Route path="/users" component={ActiveUsers} />
-    <Route path="/admin/:slug" component={ManageUsers} />
+    <Route path="/admin/users/:slug" component={ManageUsers} />
     <Route path="/admin" component={ManageUsers} />
   </>
 );

@@ -12,7 +12,8 @@ export const ManageUsersForm = ({
   saving,
   errors = {},
 }) => {
-  console.log(campaigns);
+  //TODO: add user value validation
+  console.log(user);
   return (
     <FlexContainer>
       <Heading> {user.id ? `Rediger` : `Legg til`} Bruker </Heading>
@@ -38,11 +39,12 @@ export const ManageUsersForm = ({
           name="campaigns"
           label="Kampanjer"
           placeholder={"Kampanjer"}
-          value={user.userRole}
+          value={user.campaigns}
           onChange={onChange}
           error={errors.title}
         />
-        <SelectInput
+
+        {/* <SelectInput
           name="campaign"
           label="campaign"
           value={user.campaigns || ""}
@@ -53,7 +55,7 @@ export const ManageUsersForm = ({
           }))}
           onChange={onChange}
           error={errors.campaigns}
-        />
+        /> */}
         <TextInput
           name="team"
           label="Team"
