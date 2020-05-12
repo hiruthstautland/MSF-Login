@@ -39,11 +39,7 @@ class SignUp extends React.Component {
       justifyContent: "center",
     };
     return (
-      <form
-        onSubmit={this.handleFormSubmit}
-        className="sigin-form"
-        autoComplete="on"
-      >
+      <form onSubmit={this.handleFormSubmit} className="sigin-form">
         {" "}
         <fieldset style={styleFieldset}>
           <legend>

@@ -39,7 +39,7 @@ export const LoginForm = ({ users, campaigns, loadUsers }) => {
 
   return (
     <LoginFormWr>
-      <form autoComplete="on">
+      <form>
         <fieldset>
           <legend>
             <Heading>Login</Heading>

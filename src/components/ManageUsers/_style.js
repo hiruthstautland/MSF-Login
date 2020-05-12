@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const FlexContainer = styled.div`
-  // width: 100%;
-  // height: 100%;
-  // display: flex;
-  // flex-flow: row wrap;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: 2rem;
 `;
 
 export const FormContainer = styled.form`

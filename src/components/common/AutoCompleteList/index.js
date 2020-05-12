@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import { SuggestionsLiEl, HighlightLetters } from "./_style";
 export const AutocompleteList = ({
   suggestions,
   userInput,
+  activeSuggestion,
   // onSelectSuggestion,
 }) => {
-  console.log(suggestions);
   return (
     <div tabIndex="0">
       {suggestions.length > 0 && (
@@ -15,19 +15,20 @@ export const AutocompleteList = ({
             const suggestionArray = suggestion.split(
               new RegExp(`(${userInput})`, "gi")
             );
-            // const className =
-            //   index === suggestion
-            //     ? "autocomplete__item -active"
-            //     : "autocomplete__item";
+
+            // let active = index === activeSuggestion;
             return (
-              <li
-                // className={className}
+              <SuggestionsLiEl
+                active={index === activeSuggestion}
                 key={suggestion + index}
                 // onClick={() => onSelectSuggestion(suggestion.id)}
               >
                 {suggestionArray.map((suggestedLetters, i) => (
-                  <span
+                  <HighlightLetters
                     key={i}
+                    highlight={
+                      suggestedLetters.toLowerCase() !== userInput.toLowerCase()
+                    }
                     // className={
                     //   suggestedLetters.toLowerCase() === userInput.toLowerCase()
                     //     ? ""
@@ -35,9 +36,9 @@ export const AutocompleteList = ({
                     // }
                   >
                     {suggestedLetters}
-                  </span>
+                  </HighlightLetters>
                 ))}
-              </li>
+              </SuggestionsLiEl>
             );
           })}
         </ul>

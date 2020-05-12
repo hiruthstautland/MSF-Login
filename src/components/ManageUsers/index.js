@@ -16,9 +16,8 @@ const ManageUsers = ({
   history,
   ...props
 }) => {
-  const [user, setUser] = useState({ ...props.user });
   const [errors, setErrors] = useState({});
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [user, setUser] = useState({ ...props.user });
 
   useEffect(() => {
     // TODO: set up a better if statement, what if new users are added they need to be loaded
@@ -40,14 +39,10 @@ const ManageUsers = ({
     };
   }, [props.user]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const updateUser = (name, value) => {
     setUser((prevUser) => ({
       ...prevUser,
-      [name]:
-        name === "campaigns" && value.length > 2
-          ? setShowSuggestions(true)
-          : value,
+      [name]: value,
     }));
   };
 
@@ -65,8 +60,7 @@ const ManageUsers = ({
       errors={errors}
       campaigns={campaigns}
       onSave={handleSave}
-      onChange={handleChange}
-      showSuggestions={showSuggestions}
+      updateUser={updateUser}
     />
   );
 };

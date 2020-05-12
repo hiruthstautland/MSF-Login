@@ -45,6 +45,11 @@ Button.defaultProps = {
   },
 };
 
+export const FormInputArea = styled.div`
+  margin: 1rem 0 0 0;
+  padding: 1rem;
+`;
+
 // export const Link = styled.a`
 //   textdecoration: "none";
 // `;
