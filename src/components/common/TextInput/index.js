@@ -26,7 +26,7 @@ export const TextInput = ({
   };
 
   const [activeSuggestion, setActiveSuggestion] = useState(0);
-  const [userInput, setUserInput] = useState(inputRef.current.value);
+  const [userInput, setUserInput] = useState(value);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const handleKeyDown = (e) => {
@@ -43,7 +43,7 @@ export const TextInput = ({
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+    setUserInput(value);
     if (name === "campaigns" && value.length >= 2) {
       setShowSuggestions(true);
     } else {
@@ -62,7 +62,7 @@ export const TextInput = ({
             style={TextInputStyle}
             name={name ? name : ""}
             type={type ? type : "text"}
-            value={userInput ? userInput : value}
+            value={userInput}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
