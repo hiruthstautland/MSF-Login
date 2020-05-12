@@ -1,37 +1,38 @@
+import React from "react";
 import PropTypes from "prop-types";
 
 export const AutocompleteList = ({
-  suggestion,
   suggestions,
   userInput,
-  onSelectSuggestion,
+  // onSelectSuggestion,
 }) => {
+  console.log(suggestions);
   return (
     <div tabIndex="0">
       {suggestions.length > 0 && (
         <ul>
           {suggestions.map((suggestion, index) => {
-            const suggestionArray = suggestion.id.split(
+            const suggestionArray = suggestion.split(
               new RegExp(`(${userInput})`, "gi")
             );
-            const className =
-              index === suggestion
-                ? "autocomplete__item -active"
-                : "autocomplete__item";
+            // const className =
+            //   index === suggestion
+            //     ? "autocomplete__item -active"
+            //     : "autocomplete__item";
             return (
               <li
-                className={className}
-                key={suggestion.id + index}
-                onClick={() => onSelectSuggestion(suggestion.id)}
+                // className={className}
+                key={suggestion + index}
+                // onClick={() => onSelectSuggestion(suggestion.id)}
               >
                 {suggestionArray.map((suggestedLetters, i) => (
                   <span
                     key={i}
-                    className={
-                      suggestedLetters.toLowerCase() === userInput.toLowerCase()
-                        ? ""
-                        : "autocomplete__highlight"
-                    }
+                    // className={
+                    //   suggestedLetters.toLowerCase() === userInput.toLowerCase()
+                    //     ? ""
+                    //     : "autocomplete__highlight"
+                    // }
                   >
                     {suggestedLetters}
                   </span>
@@ -45,8 +46,8 @@ export const AutocompleteList = ({
   );
 };
 AutocompleteList.propTypes = {
-  suggestion: PropTypes.number.isRequired,
+  // suggestion: PropTypes.number.isRequired,
   suggestions: PropTypes.array.isRequired,
   userInput: PropTypes.string.isRequired,
-  onSelectSuggestion: PropTypes.func.isRequired,
+  // onSelectSuggestion: PropTypes.func.isRequired,
 };

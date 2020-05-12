@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import * as campaignApi from "../../api/campaignApi";
+import { beginApiCall } from "./apiStatusActions";
 
 // TODO: add create courses
 // export function createCampaign(user) {
@@ -15,16 +16,13 @@ export function loadCampaignsSuccess(campaigns) {
 
 // thunk
 export function loadCampaigns() {
-  return function (dispatch) {
-    return (
-      campaignApi
-        .getCampaigns()
-        // .then((campaigns) => console.log(campaigns))
-        .then((campaigns) => dispatch(loadCampaignsSuccess(campaigns)))
-        .catch((error) => {
-          // TODO: handle error later, by dispatching an error that know what failed
-          throw error;
-        })
-    );
+  return async function (dispatch) {
+    dispatch(beginApiCall());
+    try {
+      const campaigns = await campaignApi.getCampaigns();
+      return dispatch(loadCampaignsSuccess(campaigns));
+    } catch (error) {
+      throw error;
+    }
   };
 }

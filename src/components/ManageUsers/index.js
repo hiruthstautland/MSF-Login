@@ -5,6 +5,7 @@ import * as userActions from "../../redux/actions/userActions";
 import * as campaignActions from "../../redux/actions/campaignActions";
 import { ManageUsersForm } from "./ManageUsersForm";
 import { newUser } from "../../../mockApi/mockData";
+import { Spinner } from "../common/Spinner";
 
 const ManageUsers = ({
   users,
@@ -17,6 +18,7 @@ const ManageUsers = ({
 }) => {
   const [user, setUser] = useState({ ...props.user });
   const [errors, setErrors] = useState({});
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
     // TODO: set up a better if statement, what if new users are added they need to be loaded
@@ -25,19 +27,27 @@ const ManageUsers = ({
         // TODO: make a customer Friendly UI -> display error message "sorry, unable to find/get user for you! Try again!"
         console.log(`LOADING USERS FAILED: ${error}`);
       });
+    } else {
+      setUser({ ...props.user });
     }
     if (campaigns.length === 0) {
       loadCampaigns().catch((error) => {
         console.log(`Not ablet to load campaigns: ${error}`);
       });
     }
-  }, []);
+    return () => {
+      setUser({});
+    };
+  }, [props.user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prevUser) => ({
       ...prevUser,
-      [name]: name === "campaigns" ? parseInt(value, 10) : value,
+      [name]:
+        name === "campaigns" && value.length > 2
+          ? setShowSuggestions(true)
+          : value,
     }));
   };
 
@@ -46,13 +56,17 @@ const ManageUsers = ({
     await saveUser(user);
     return history.push("/users");
   };
-  return (
+
+  return campaigns.length === 0 || users.length === 0 ? (
+    <Spinner />
+  ) : (
     <ManageUsersForm
       user={user}
       errors={errors}
       campaigns={campaigns}
       onSave={handleSave}
       onChange={handleChange}
+      showSuggestions={showSuggestions}
     />
   );
 };
@@ -73,7 +87,7 @@ const getUserBySlug = (users, slug) => {
 };
 
 function mapStateToProps(state, ownProps) {
-  const { slug } = ownProps.match.params;
+  const slug = ownProps.match.params.slug;
   const user =
     slug && state.users.length > 0 ? getUserBySlug(state.users, slug) : newUser;
   return {

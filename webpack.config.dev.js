@@ -4,7 +4,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 // Babel needs to know we are running in dev-mode
-
 process.env.NODE_ENV = "development";
 
 module.exports = {

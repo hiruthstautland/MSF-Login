@@ -38,7 +38,6 @@ server.post("/users", async (req, res, next) => {
   if (error) {
     res.status(400).send(error);
   } else {
-    console.log("Post ", req.body);
     req.body.slug = await createSlug(req.body.name);
     req.body.email = createEmail(req.body.slug);
     next();

@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 import * as userApi from "../../api/userApi";
-
+import { beginApiCall } from "./apiStatusActions";
 // action creaters
 
 export function loadUsersSuccess(users) {
@@ -18,9 +18,10 @@ export function createUserSuccess(users) {
 // thunk
 export function loadUsers() {
   return async function (dispatch) {
+    dispatch(beginApiCall());
     try {
       const users = await userApi.getUsers();
-      dispatch(loadUsersSuccess(users));
+      return dispatch(loadUsersSuccess(users));
     } catch (error) {
       // TODO: handle error later, by dispatching an error that know that it has failed
       throw error;
@@ -29,6 +30,7 @@ export function loadUsers() {
 }
 export function saveUser(user) {
   return function (dispatch, getState) {
+    dispatch(beginApiCall());
     return userApi
       .saveUser(user)
       .then((savedUser) => {

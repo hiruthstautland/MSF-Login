@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { TextInput } from "../common/TextInput";
-import { SelectInput } from "../common/SelectInput";
+import { AutocompleteList } from "../common/AutoCompleteList";
 import { Heading, Button, ButtonContainer } from "../../style/_common";
 import { FormContainer, FlexContainer } from "./_style";
+
 export const ManageUsersForm = ({
   user,
   campaigns,
   onSave,
   onChange,
   saving,
+  showSuggestions,
   errors = {},
 }) => {
   //TODO: add user value validation
-  console.log(user);
+  const campaings = useState();
+  const campaingRef = useRef("");
+
+  const availableCampaigns = campaigns.map((campaign) => campaign.name);
+  console.log(availableCampaigns.length);
+
+  console.log(campaingRef.current.value);
   return (
     <FlexContainer>
       <Heading> {user.id ? `Rediger` : `Legg til`} Bruker </Heading>
@@ -36,6 +44,7 @@ export const ManageUsersForm = ({
           error={errors.title}
         />
         <TextInput
+          ref={campaingRef}
           name="campaigns"
           label="Kampanjer"
           placeholder={"Kampanjer"}
@@ -43,6 +52,14 @@ export const ManageUsersForm = ({
           onChange={onChange}
           error={errors.title}
         />
+        {showSuggestions && (
+          <AutocompleteList
+            // suggestion={suggestion}
+            suggestions={availableCampaigns}
+            userInput={campaingRef.current.value}
+            // onSelectSuggestion={onSelectSuggestion}
+          />
+        )}
 
         {/* <SelectInput
           name="campaign"

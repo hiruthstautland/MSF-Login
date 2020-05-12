@@ -65,17 +65,17 @@ export const LoginForm = ({ users, campaigns, loadUsers }) => {
             <Link to="admin">
               <Button type="button">Logg inn</Button>
             </Link>
+            {showForm && (
+              <AutocompleteList
+                suggestion={suggestion}
+                suggestions={suggestions}
+                userInput={userInput}
+                onSelectSuggestion={onSelectSuggestion}
+              />
+            )}
           </ButtonContainer>
         </fieldset>
       </form>
-      {showForm && (
-        <AutocompleteList
-          suggestion={suggestion}
-          suggestions={suggestions}
-          userInput={userInput}
-          onSelectSuggestion={onSelectSuggestion}
-        />
-      )}
     </LoginFormWr>
   );
 };
