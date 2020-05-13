@@ -26,7 +26,8 @@ export const TextInput = ({
   };
 
   const [activeSuggestion, setActiveSuggestion] = useState(0);
-  const [userInput, setUserInput] = useState(value);
+  const [userInput, setUserInput] = useState(value || "");
+  console.log(value);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const handleKeyDown = (e) => {
