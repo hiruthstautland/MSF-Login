@@ -5,7 +5,7 @@ export const AutocompleteList = ({
   suggestions,
   userInput,
   activeSuggestion,
-  // onSelectSuggestion,
+  handleClick,
 }) => {
   return (
     <div tabIndex="0">
@@ -15,13 +15,11 @@ export const AutocompleteList = ({
             const suggestionArray = suggestion.split(
               new RegExp(`(${userInput})`, "gi")
             );
-
-            // let active = index === activeSuggestion;
             return (
               <SuggestionsLiEl
-                active={index === activeSuggestion}
+                active={index + 1 === activeSuggestion}
                 key={suggestion + index}
-                // onClick={() => onSelectSuggestion(suggestion.id)}
+                onClick={() => handleClick(suggestion)}
               >
                 {suggestionArray.map((suggestedLetters, i) => (
                   <HighlightLetters
@@ -29,11 +27,6 @@ export const AutocompleteList = ({
                     highlight={
                       suggestedLetters.toLowerCase() !== userInput.toLowerCase()
                     }
-                    // className={
-                    //   suggestedLetters.toLowerCase() === userInput.toLowerCase()
-                    //     ? ""
-                    //     : "autocomplete__highlight"
-                    // }
                   >
                     {suggestedLetters}
                   </HighlightLetters>

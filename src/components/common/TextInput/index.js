@@ -25,7 +25,7 @@ export const TextInput = ({
     outline: "none",
   };
 
-  const [activeSuggestion, setActiveSuggestion] = useState(0);
+  const [activeSuggestion, setActiveSuggestion] = useState(-1);
   const [userInput, setUserInput] = useState(value || "");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
@@ -60,11 +60,15 @@ export const TextInput = ({
     updateUser(name, value);
   };
 
+  const handleClick = (item) => {
+    setUserInput(item);
+    setShowSuggestions(false);
+  };
+
   const suggestionsByUserInput = (userInput, availableSuggestions) => {
     const suggestionArr = availableSuggestions.filter((suggestion) => {
       return suggestion.match(new RegExp(`${userInput}`, "gi"));
     });
-    console.log(suggestionArr);
     setSuggestions(suggestionArr);
   };
 
@@ -88,7 +92,7 @@ export const TextInput = ({
           {showSuggestions && (
             <AutocompleteList
               activeSuggestion={activeSuggestion}
-              // onSelectSuggestion={onSelectSuggestion}
+              handleClick={handleClick}
               suggestions={suggestions}
               userInput={inputRef.current.value}
               showSuggestions={showSuggestions}
