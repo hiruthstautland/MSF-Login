@@ -8,7 +8,6 @@
     "start:api": "nodemon mockApi/apiServer.js"
   },
   "dependencies": {
-    "@material-ui/core": "^4.9.5",
     "immer": "2.1.3",
     "prop-types": "15.7.2",
     "react": "16.8.4",

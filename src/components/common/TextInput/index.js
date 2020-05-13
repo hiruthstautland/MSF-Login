@@ -10,7 +10,7 @@ export const TextInput = ({
   placeholder,
   error,
   value,
-  suggestions,
+  availableSuggestions,
   updateUser,
 }) => {
   // TODO: rewrite to styled componentes
@@ -27,30 +27,45 @@ export const TextInput = ({
 
   const [activeSuggestion, setActiveSuggestion] = useState(0);
   const [userInput, setUserInput] = useState(value || "");
-  console.log(value);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 38 && activeSuggestion > 0) {
       // TODO: maybe use ...prevState
       setActiveSuggestion(activeSuggestion - 1);
-    } else if (e.keyCode === 40 && activeSuggestion < suggestions.length - 1) {
+    } else if (
+      e.keyCode === 40 &&
+      activeSuggestion < availableSuggestions.length - 1
+    ) {
       setActiveSuggestion(activeSuggestion + 1);
     } else if (e.keyCode === 13) {
       e.preventDefault();
-      setUserInput(suggestions[activeSuggestion]);
+      setUserInput(availableSuggestions[activeSuggestion]);
       setShowSuggestions(false);
     }
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserInput(value);
     if (name === "campaigns" && value.length >= 2) {
+      suggestionsByUserInput(value, availableSuggestions);
       setShowSuggestions(true);
+    } else if (value.length < 1) {
+      setShowSuggestions(false);
     } else {
       setShowSuggestions(false);
     }
     updateUser(name, value);
+  };
+
+  const suggestionsByUserInput = (userInput, availableSuggestions) => {
+    const suggestionArr = availableSuggestions.filter((suggestion) => {
+      return suggestion.match(new RegExp(`${userInput}`, "gi"));
+    });
+    console.log(suggestionArr);
+    setSuggestions(suggestionArr);
   };
 
   return (
@@ -59,6 +74,7 @@ export const TextInput = ({
         <>
           <TextLabel htmlFor={label}>{label}</TextLabel>
           <input
+            spellCheck="false"
             ref={inputRef}
             style={TextInputStyle}
             name={name ? name : ""}

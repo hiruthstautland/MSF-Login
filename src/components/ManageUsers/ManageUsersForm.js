@@ -44,7 +44,7 @@ export const ManageUsersForm = ({
           value={user.campaigns}
           error={errors.title}
           updateUser={updateUser}
-          suggestions={availableCampaigns}
+          availableSuggestions={availableCampaigns}
         />
 
         {/* <SelectInput
