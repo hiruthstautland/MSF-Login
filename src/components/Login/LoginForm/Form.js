@@ -6,9 +6,20 @@ import { Button, Heading, ButtonContainer } from "../../../style/_common";
 import { LoginFormWr } from "../_style";
 import { TextInput } from "../../common/TextInput";
 
-export const Form = ({ userInput, handleChange, password }) => {
+export const Form = ({
+  userInput,
+  handleChange,
+  password,
+  handleLoginAttempt,
+  error,
+}) => {
   return (
     <LoginFormWr>
+      {error && (
+        <div style={{ color: "red" }}>
+          {`MAYDAY, some kind of error: ${error}`}
+        </div>
+      )}
       <form>
         <fieldset>
           <legend>
@@ -32,9 +43,9 @@ export const Form = ({ userInput, handleChange, password }) => {
             // error={errors.title}
           />
           <ButtonContainer>
-            <Link to="admin">
-              <Button type="button">Logg inn</Button>
-            </Link>
+            <Button type="button" onClick={handleLoginAttempt}>
+              Logg inn
+            </Button>
           </ButtonContainer>
         </fieldset>
       </form>

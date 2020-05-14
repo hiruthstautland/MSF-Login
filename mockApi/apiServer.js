@@ -6,28 +6,31 @@ Relevant source code: https://github.com/typicode/json-server/blob/master/src/cl
 require("dotenv").config();
 
 const jsonServer = require("json-server");
-const server = jsonServer.create();
+const expressServer = jsonServer.create();
 const path = require("path");
 const router = jsonServer.router(path.join(__dirname, "database.json"));
 const port = process.env.PORT;
+const secret = process.env.SECRET;
+const { authenticate } = require("./Middleware/authenticate");
+const jsonWebToken = require("jsonwebtoken");
 
 // You can override some defaults by passing a config object to jsonServer.defaults();
 const middlewares = jsonServer.defaults({
   static: "node_modules/json-server/dist",
 });
 
-server.use(middlewares);
+expressServer.use(middlewares);
 
-server.use(jsonServer.bodyParser);
+expressServer.use(jsonServer.bodyParser);
 
 // TODO:add error handler -> req, res, next, err
 
 // custom delay on all request
-server.use((req, res, next) => {
+expressServer.use((req, res, next) => {
   setTimeout(next, 20);
 });
 
-server.use((req, res, next) => {
+expressServer.use((req, res, next) => {
   if (req.method === "POST") {
     req.body.createdAt = Date.now();
   }
@@ -41,6 +44,41 @@ server.use((req, res, next) => {
 //     next(error);
 //   }
 // });
+const server = jsonServer.create();
+server.post("/session", async (req, res, next) => {
+  const { username, password } = req.body;
+  const user = await getUserByHandle(username);
+
+  try {
+    if (!user) {
+      return res.status(401).send({ error: "not in database" });
+    }
+
+    if (user.password != password) {
+      return res.status(401).send({ error: "Wrong password" });
+    }
+
+    const token = jsonWebToken.sign(
+      {
+        id: user.id,
+        username: user.username,
+      },
+      new Buffer(secret, "base64")
+    );
+
+    res.send({
+      token: token,
+    });
+  } catch (error) {
+    next(error.message);
+  }
+});
+
+server.get("/session", authenticate, function (req, res) {
+  res.send({
+    message: "You are authenticated",
+  });
+});
 
 // post
 server.post("/users", async (req, res, next) => {
@@ -57,7 +95,9 @@ server.post("/users", async (req, res, next) => {
 // default router
 server.use(router);
 
-server.listen(port, () => {
+expressServer.use("api", server);
+
+expressServer.listen(port, () => {
   console.log(`Mock(JSON) Server is running on port: ${port}`);
 });
 

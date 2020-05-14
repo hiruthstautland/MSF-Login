@@ -8,13 +8,15 @@ import { Login } from "./Login";
 import SignUp from "./SignUp";
 import ManageUsers from "./ManageUsers";
 import { PageNotFound } from "./PageNotFound";
+import { Authenticate } from "./Authenticate";
 
 function App() {
   return (
     <PreventCopy>
       <Flexbox>
         <Switch>
-          <Route exact path="/" component={LandingPageContainer} />
+          <Route exact path="/login" component={LandingPageContainer} />
+          <Route exact path="/" component={Authenticate} />
           <Route component={AppUserContainer} />
           <Route component={AppAdminContainer} />
           <Route component={PageNotFound} />

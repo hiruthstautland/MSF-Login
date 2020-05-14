@@ -1,6 +1,6 @@
-const API_LOGIN_VALIDATION = process.env.API_LOGIN;
+const API_LOGIN = process.env.API_LOGIN;
 
-async function validateLogin(username, secret) {
+export async function validateLogin(username, secret) {
   const resp = await fetch(`${API_LOGIN}/users`, {
     method: "POST",
     headers: {
@@ -8,9 +8,10 @@ async function validateLogin(username, secret) {
     },
     body: JSON.stringify({ username, secret }),
   });
-  const { secret } = resp.body;
-
-  localStorage.setItem("secret", secret);
+  const { token } = resp.body;
+  console.log(token);
+  console.log(resp.body);
+  localStorage.setItem("token", token);
   //   await resp.json();
 }
 
@@ -19,7 +20,7 @@ export async function checkLogin() {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "X-Auth-Token": localStorage.getItem("secret", secret),
+      "X-Auth-Token": localStorage.getItem("secret"),
     },
   });
   return resp.status === 200;
