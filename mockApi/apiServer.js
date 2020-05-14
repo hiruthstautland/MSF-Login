@@ -22,7 +22,7 @@ server.use(jsonServer.bodyParser);
 
 // custom delay on all request
 server.use((req, res, next) => {
-  setTimeout(next, 2000);
+  setTimeout(next, 20);
 });
 
 server.use((req, res, next) => {
@@ -38,7 +38,6 @@ server.post("/users", async (req, res, next) => {
   if (error) {
     res.status(400).send(error);
   } else {
-    console.log("Post ", req.body);
     req.body.slug = await createSlug(req.body.name);
     req.body.email = createEmail(req.body.slug);
     next();
@@ -65,7 +64,7 @@ function createEmail(slug) {
 
 function validateUser(user) {
   if (!user.name) return `Name is required!`;
-  if (!user.email) return `Email is required!`;
+  // if (!user.email) return `Email is required!`;
   if (!user.userRole) return `Role is required!`;
   return ``;
 }

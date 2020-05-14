@@ -15,7 +15,7 @@ export function saveUser(user) {
     .catch(handleError);
 }
 
-export function delteUser(userId) {
+export function deleteUser(userId) {
   return fetch(baseUrl + userId, { method: "DELETE" })
     .then(handleResponse)
     .catch(handleError);

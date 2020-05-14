@@ -1,25 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./style.css";
-
+import { Heading, Button, ButtonContainer } from "../../style/_common";
 export const LandingPage = () => (
-  <div className='main'>
-    <fieldset>
-      <legend>
-        <h2>MSF</h2>
-      </legend>
-      <p>Hello from Landing Page. Velkommen til MSF!</p>
-      <Link to='signup'>
-        <button className='btn-newUser' type='button'>
-          Registrer ny bruker!
-        </button>
+  <fieldset>
+    <Heading> Velkommen til MSF Norge!</Heading>
+    <ButtonContainer>
+      <Link to="signup">
+        <Button type="button">Registrer ny bruker!</Button>
       </Link>
-      <Link to='login'>
-        <button className='btn-oldUser' type='button'>
-          Fortsett til Login!
-        </button>
+      <Link to="login">
+        <Button type="button">Fortsett til Login!</Button>
       </Link>
-    </fieldset>
-  </div>
+    </ButtonContainer>
+  </fieldset>
 );
- 

@@ -1,24 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import msfEmpImg from "../../content/img/msf_emp.gif";
+import LoginForm from "./LoginForm";
+import {
+  LoginWr,
+  LoginFormContainer,
+  LoginImgContainer,
+  LoginImg,
+  LoginLogo,
+} from "./_style";
 
-export const Login = () => (
-  <div className='Login'>
-    <form className='login-form' autoComplete='on'>
-      <fieldset>
-        <legend>
-          <h2>Login</h2>
-        </legend>
-        <label htmlFor='name'>
-          Navn
-          <input id='username' type='text' />
-        </label>
-        <Link to='landingpage'>
-          <button type='button'>Logg inn</button>
-        </Link>
-        <Link to='/'>
-          <button type='button'>Tilbake</button>
-        </Link>
-      </fieldset>
-    </form>
-  </div>
-);
+export const Login = () => {
+  return (
+    <LoginWr>
+      <LoginFormContainer>
+        <LoginForm />
+      </LoginFormContainer>
+      <LoginImgContainer>
+        <LoginImg imgUrl={msfEmpImg}>
+          <LoginLogo>MSF - LOGO</LoginLogo>
+        </LoginImg>
+      </LoginImgContainer>
+    </LoginWr>
+  );
+};

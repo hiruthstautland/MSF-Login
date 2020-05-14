@@ -1,13 +1,16 @@
 import * as types from "./actionTypes";
 import * as userApi from "../../api/userApi";
+import { beginApiCall } from "./apiStatusActions";
+// action creaters
 
-export function createUser(user) {
-  return { type: types.CREATE_USER, user };
-}
-
-// action creater
 export function loadUsersSuccess(users) {
   return { type: types.LOAD_USERS_SUCCESS, users };
+}
+export function updateUserSuccess(users) {
+  return { type: types.UPDATE_USER_SUCCESS, users };
+}
+export function createUserSuccess(users) {
+  return { type: types.CREATE_USER_SUCCESS, users };
 }
 
 // TODO: Write corresponding error action for each thunk. As errors could/should be handled uniqly based on type of error.
@@ -15,12 +18,28 @@ export function loadUsersSuccess(users) {
 // thunk
 export function loadUsers() {
   return async function (dispatch) {
+    dispatch(beginApiCall());
     try {
       const users = await userApi.getUsers();
-      dispatch(loadUsersSuccess(users));
+      return dispatch(loadUsersSuccess(users));
     } catch (error) {
       // TODO: handle error later, by dispatching an error that know that it has failed
       throw error;
     }
+  };
+}
+export function saveUser(user) {
+  return function (dispatch, getState) {
+    dispatch(beginApiCall());
+    return userApi
+      .saveUser(user)
+      .then((savedUser) => {
+        user.id
+          ? dispatch(updateUserSuccess(savedUser))
+          : dispatch(createUserSuccess(savedUser));
+      })
+      .catch((error) => {
+        throw error;
+      });
   };
 }

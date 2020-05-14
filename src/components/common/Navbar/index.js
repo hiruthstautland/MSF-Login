@@ -1,27 +1,61 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Nav, NavLinks, activeStyle } from "../../../style/navbar/_navbar";
+import { Nav, activeStyle, NavbarWideList, NavbarNarrowWr } from "./_style";
+import styled from "styled-components";
 
-export const Navbar = () => {
-  return (
-    <Nav>
-      {" | "}
-      <NavLink to="/" style={NavLinks} activeStyle={activeStyle} exact>
-        Home
-      </NavLink>
-      {" | "}
-      <NavLink to="/login" style={NavLinks} activeStyle={activeStyle}>
+const NavLinks = styled(NavLink)`
+  color: gray;
+  background: transparent;
+  padding: 20px;
+  width: 100%;
+  text-decoration: none;
+  display: inline-block;
+  &:hover {
+    color: black;
+  }
+`;
+
+export const Navbar = () => (
+  <Nav>
+    <NavbarWideList>
+      <NavLinks to="/" activeStyle={activeStyle} exact>
+        Back
+      </NavLinks>
+      <NavLinks to="/login" activeStyle={activeStyle}>
         Logg inn
-      </NavLink>
-      {" | "}
-      <NavLink to="/signup" style={NavLinks} activeStyle={activeStyle}>
+      </NavLinks>
+      <NavLinks to="/signup" activeStyle={activeStyle}>
         Ny bruker
-      </NavLink>
-      {" | "}
-      <NavLink to="/users" style={NavLinks} activeStyle={activeStyle}>
-        Aktive brukere
-      </NavLink>
-      {" | "}
-    </Nav>
-  );
-};
+      </NavLinks>
+      <NavLinks to="/users" activeStyle={activeStyle}>
+        Brukere
+      </NavLinks>
+      <NavLinks to="/admin" activeStyle={activeStyle}>
+        Admin
+      </NavLinks>
+    </NavbarWideList>
+    {/* <NavbarNarrowWr>
+      <span> *</span>
+      <ul>
+        <li>
+          <a>Back</a>
+        </li>
+        <li>
+          <a>Logg inn</a>
+        </li>
+        <li>
+          <a>Back</a>
+        </li>
+        <li>
+          <a>Ny bruker</a>
+        </li>
+        <li>
+          <a>Aktive Brukere</a>
+        </li>
+        <li>
+          <a>Admin Side</a>
+        </li>
+      </ul>
+    </NavbarNarrowWr> */}
+  </Nav>
+);

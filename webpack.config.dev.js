@@ -4,7 +4,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 // Babel needs to know we are running in dev-mode
-
 process.env.NODE_ENV = "development";
 
 module.exports = {
@@ -41,7 +40,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      "process.env.API_URL": JSON.stringify("http://localhost:3001"),
+      "process.env.API_URL": JSON.stringify("http://localhost:3030"),
     }),
     new HtmlWebpackPlugin({
       template: "src/index.html",
@@ -58,6 +57,14 @@ module.exports = {
       {
         test: /(\.css)$/,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
       },
     ],
   },
