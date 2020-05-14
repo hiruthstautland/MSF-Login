@@ -1,1 +1,1 @@
-{"users":[{"id":1,"name":"Admin","userRole":"Admin","team":"LSP","campaigns":0}],"campaigns":[{"id":0,"name":"Admin"},{"id":1,"name":"Moria"},{"id":3,"name":"Ebola"},{"id":4,"name":"Access Campaign"}]}
+{"users":[{"id":1,"name":"Admin","userRole":"Admin","secret":"Admin0","team":"LSP","campaigns":0}],"campaigns":[{"id":0,"name":"Annet"},{"id":1,"name":"Moria"},{"id":3,"name":"Ebola"},{"id":4,"name":"Access Campaign"}]}

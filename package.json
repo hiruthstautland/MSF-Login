@@ -3,7 +3,7 @@
   "description": "MSF App that uses React and Redux, based on the Pluralsight course by Cory House",
   "scripts": {
     "start": "run-p start:dev start:api",
-    "start:dev": "webpack-dev-server --open-- --in-line --config webpack.config.dev.js --port 3030",
+    "start:dev": "webpack-dev-server --open-- --in-line --config webpack.config.dev.js --port 3000",
     "prestart:api": "node mockApi/createMockDB.js",
     "start:api": "nodemon mockApi/apiServer.js"
   },
@@ -27,6 +27,7 @@
     "babel-preset-react-app": "7.0.2",
     "css-loader": "2.1.1",
     "cssnano": "4.1.10",
+    "dotenv": "^8.2.0",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.11.2",
     "eslint": "5.15.2",

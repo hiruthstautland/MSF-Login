@@ -17,7 +17,7 @@ export const AutocompleteList = ({
             );
             return (
               <SuggestionsLiEl
-                active={index + 1 === activeSuggestion}
+                active={index === activeSuggestion}
                 key={suggestion + index}
                 onClick={() => handleClick(suggestion)}
               >
@@ -40,8 +40,8 @@ export const AutocompleteList = ({
   );
 };
 AutocompleteList.propTypes = {
-  // suggestion: PropTypes.number.isRequired,
+  activeSuggestion: PropTypes.number.isRequired,
   suggestions: PropTypes.array.isRequired,
   userInput: PropTypes.string.isRequired,
-  // onSelectSuggestion: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };

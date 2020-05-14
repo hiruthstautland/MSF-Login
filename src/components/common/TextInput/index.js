@@ -30,6 +30,8 @@ export const TextInput = ({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
 
+  //TODO: Add click outside dropdown list functionallity that closes list
+
   const handleKeyDown = (e) => {
     if (e.keyCode === 38 && activeSuggestion > 0) {
       // TODO: maybe use ...prevState
@@ -57,7 +59,7 @@ export const TextInput = ({
     } else {
       setShowSuggestions(false);
     }
-    updateUser(name, value);
+    updateUser && updateUser(name, value);
   };
 
   const handleClick = (item) => {
