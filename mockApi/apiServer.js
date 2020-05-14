@@ -6,7 +6,7 @@ Relevant source code: https://github.com/typicode/json-server/blob/master/src/cl
 require("dotenv").config();
 
 const jsonServer = require("json-server");
-const expressServer = jsonServer.create();
+const server = jsonServer.create();
 const path = require("path");
 const router = jsonServer.router(path.join(__dirname, "database.json"));
 const port = process.env.PORT;
@@ -19,18 +19,18 @@ const middlewares = jsonServer.defaults({
   static: "node_modules/json-server/dist",
 });
 
-expressServer.use(middlewares);
+server.use(middlewares);
 
-expressServer.use(jsonServer.bodyParser);
+server.use(jsonServer.bodyParser);
 
 // TODO:add error handler -> req, res, next, err
 
 // custom delay on all request
-expressServer.use((req, res, next) => {
+server.use((req, res, next) => {
   setTimeout(next, 20);
 });
 
-expressServer.use((req, res, next) => {
+server.use((req, res, next) => {
   if (req.method === "POST") {
     req.body.createdAt = Date.now();
   }
@@ -44,7 +44,6 @@ expressServer.use((req, res, next) => {
 //     next(error);
 //   }
 // });
-const server = jsonServer.create();
 server.post("/session", async (req, res, next) => {
   const { username, password } = req.body;
   const user = await getUserByHandle(username);
@@ -95,9 +94,7 @@ server.post("/users", async (req, res, next) => {
 // default router
 server.use(router);
 
-expressServer.use("api", server);
-
-expressServer.listen(port, () => {
+server.listen(port, () => {
   console.log(`Mock(JSON) Server is running on port: ${port}`);
 });
 

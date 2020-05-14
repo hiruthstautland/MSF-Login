@@ -1,5 +1,5 @@
 const jsonWebToken = require("jsonwebtoken");
-const secret = process.env.secret;
+const secret = process.env.SECRET;
 
 function authenticate(req, res, next) {
   const token = req.headers["x-auth-token"];

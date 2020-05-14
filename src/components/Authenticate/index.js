@@ -10,7 +10,7 @@ export const Authenticate = ({ history }) => {
       if (!isAuthenticated) {
         history.replace("/login");
       } else {
-        history.replace("/");
+        history.replace("/home");
       }
     };
   });

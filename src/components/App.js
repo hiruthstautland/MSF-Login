@@ -15,8 +15,8 @@ function App() {
     <PreventCopy>
       <Flexbox>
         <Switch>
-          <Route exact path="/login" component={LandingPageContainer} />
-          <Route exact path="/" component={Authenticate} />
+          <Route exact path="/" component={LandingPageContainer} />
+          <Route path="/auth" component={Authenticate} />
           <Route component={AppUserContainer} />
           <Route component={AppAdminContainer} />
           <Route component={PageNotFound} />

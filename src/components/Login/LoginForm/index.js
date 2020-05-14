@@ -10,7 +10,7 @@ export const LoginForm = ({ users, loadUsers, history }) => {
   const [secret, setSecret] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   //   const [onSelectSuggestion, setOnSelectSuggestion] = useState("");
-  const [username, setUsername] = useState("");
+  //   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -33,6 +33,7 @@ export const LoginForm = ({ users, loadUsers, history }) => {
     try {
       setError(null);
       const { token, error } = await validateLogin({ userInput, secret });
+      console.log("token-------", token);
       if (secret.length < 0) {
         throw new Error("Please provide password");
       }
